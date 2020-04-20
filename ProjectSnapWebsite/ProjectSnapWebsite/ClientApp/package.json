@@ -15,6 +15,7 @@
     "start": "run-p theme \"serve -- {@}\" --",
     "serve": "ng serve",
     "theme": "sass --watch --style=compressed --no-source-map src/app/assets/themes:src/assets/themes",
+    "setconfig": "webpack --config webpack.config.js",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
@@ -22,6 +23,7 @@
   },
   "private": true,
   "dependencies": {
+    "@angular-builders/custom-webpack": "^8.4.1",
     "@angular/animations": "~8.2.9",
     "@angular/common": "~8.2.9",
     "@angular/compiler": "~8.2.9",
@@ -51,8 +53,7 @@
     "zone.js": "~0.9.1"
   },
   "devDependencies": {
-    "@angular-builders/custom-webpack": "^9.1.0",
-    "@angular-devkit/build-angular": "~0.803.8",
+    "@angular-devkit/build-angular": "^0.803.26",
     "@angular/cli": "~8.3.8",
     "@angular/compiler-cli": "~8.2.9",
     "@angular/language-service": "~8.2.9",
@@ -72,6 +73,7 @@
     "protractor": "~5.4.0",
     "ts-node": "~7.0.0",
     "tslint": "~5.15.0",
-    "typescript": "~3.5.3"
+    "typescript": "~3.5.3",
+    "webpack-cli": "^3.3.11"
   }
 }

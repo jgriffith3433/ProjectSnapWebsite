@@ -25,6 +25,7 @@ using ProjectSnapWebsite.Helpers;
 using System;
 using System.Collections.Generic;
 using AppPermissions = DAL.Core.ApplicationPermissions;
+using Microsoft.AspNetCore.StaticFiles;
 
 namespace ProjectSnapWebsite
 {
@@ -185,11 +186,18 @@ namespace ProjectSnapWebsite
                 app.UseHsts();
             }
 
-            //app.UseHttpsRedirection();
-            app.UseStaticFiles();
+            app.UseHttpsRedirection();
+            app.UseFileServer();
+            var options = new StaticFileOptions();
+            var contentTypeProvider = (FileExtensionContentTypeProvider)options.ContentTypeProvider ?? new FileExtensionContentTypeProvider();
+            contentTypeProvider.Mappings.Add(".data", "application/octet-stream");
+            options.ContentTypeProvider = contentTypeProvider;
+            app.UseStaticFiles(options);
+
+
             if (!env.IsDevelopment())
             {
-                app.UseSpaStaticFiles();
+                app.UseSpaStaticFiles(options);
             }
 
             app.UseRouting();

@@ -28,18 +28,23 @@ namespace ProjectSnapWebsite
             using (var scope = host.Services.CreateScope())
             {
                 var services = scope.ServiceProvider;
-
-                try
+                var numTries = 0;
+                var maxTries = 3;
+                while (numTries < maxTries)
                 {
-                    var databaseInitializer = services.GetRequiredService<IDatabaseInitializer>();
-                    databaseInitializer.SeedAsync().Wait();
-                }
-                catch (Exception ex)
-                {
-                    var logger = services.GetRequiredService<ILogger<Program>>();
-                    logger.LogCritical(LoggingEvents.INIT_DATABASE, ex, LoggingEvents.INIT_DATABASE.Name);
+                    numTries++;
+                    try
+                    {
+                        var databaseInitializer = services.GetRequiredService<IDatabaseInitializer>();
+                        databaseInitializer.SeedAsync().Wait();
+                    }
+                    catch (Exception ex)
+                    {
+                        var logger = services.GetRequiredService<ILogger<Program>>();
+                        logger.LogCritical(LoggingEvents.INIT_DATABASE, ex, LoggingEvents.INIT_DATABASE.Name);
 
-                    throw new Exception(LoggingEvents.INIT_DATABASE.Name, ex);
+                        //throw new Exception(LoggingEvents.INIT_DATABASE.Name, ex);
+                    }
                 }
             }
 
