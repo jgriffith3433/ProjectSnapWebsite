@@ -16,6 +16,9 @@
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
+          "customWebpackConfig": {
+            "path": "./webpack.config.js"
+          },
           "options": {
             "outputPath": "dist",
             "index": "src/index.html",
@@ -47,6 +50,9 @@
                   "with": "src/environments/environment.prod.ts"
                 }
               ],
+              "customWebpackConfig": {
+                "path": "./webpack.config.js"
+              },
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
@@ -78,7 +84,7 @@
           },
           "configurations": {
             "production": {
-              "browserTarget": "quickapp:build:production"
+              "browserTarget": "quickapp:build:production",
             }
           }
         },

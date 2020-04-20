@@ -41,6 +41,7 @@ import { BootstrapTabDirective } from './directives/bootstrap-tab.directive';
 import { BootstrapToggleDirective } from './directives/bootstrap-toggle.directive';
 import { BootstrapSelectDirective } from './directives/bootstrap-select.directive';
 import { BootstrapDatepickerDirective } from './directives/bootstrap-datepicker.directive';
+import { NgUnityWebglDirective } from './directives/ng-unity-webgl.directive';
 import { GroupByPipe } from './pipes/group-by.pipe';
 
 import { AppComponent } from './components/app.component';
@@ -110,7 +111,8 @@ import { RoleEditorComponent } from './components/controls/role-editor.component
     BootstrapToggleDirective,
     BootstrapSelectDirective,
     BootstrapDatepickerDirective,
-    GroupByPipe
+    GroupByPipe,
+    NgUnityWebglDirective
   ],
   providers: [
     { provide: ErrorHandler, useClass: AppErrorHandler },
