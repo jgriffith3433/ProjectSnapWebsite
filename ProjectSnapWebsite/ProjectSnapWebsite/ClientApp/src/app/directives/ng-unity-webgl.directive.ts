@@ -22,13 +22,13 @@ export class NgUnityWebglDirective {
 
   ngOnInit() {
     unityLoader.createUnityInstance(this.el.nativeElement, {
-      dataUrl: `/assets/games/${this.gameName}/0.1.data`,
-      frameworkUrl: `/assets/games/${this.gameName}/0.1.framework.js`,
-      codeUrl: `/assets/games/${this.gameName}/0.1.wasm`,
+      dataUrl: `/assets/games/${this.gameName}/0.2.data`,
+      frameworkUrl: `/assets/games/${this.gameName}/0.2.framework.js`,
+      codeUrl: `/assets/games/${this.gameName}/0.2.wasm`,
       streamingAssetsUrl: "StreamingAssets",
       companyName: "DefaultCompany",
       productName: "ProjectSnapWebgame",
-      productVersion: "0.1",
+      productVersion: "0.2",
     }).then((instance) => {
       this.instance = instance;
       this.ngUnityWebglManagerService.setInstance(this.gameName, this.instance);
