@@ -31,6 +31,7 @@ import { LocalStoreManager } from './services/local-store-manager.service';
 import { AuthStorage } from './services/auth-storage';
 import { NotificationService } from './services/notification.service';
 import { NotificationEndpoint } from './services/notification-endpoint.service';
+import { NgUnityWebglManagerService } from './services/ng-unity-webgl-manager.service';
 import { AccountService } from './services/account.service';
 import { AccountEndpoint } from './services/account-endpoint.service';
 
@@ -42,6 +43,7 @@ import { BootstrapToggleDirective } from './directives/bootstrap-toggle.directiv
 import { BootstrapSelectDirective } from './directives/bootstrap-select.directive';
 import { BootstrapDatepickerDirective } from './directives/bootstrap-datepicker.directive';
 import { NgUnityWebglDirective } from './directives/ng-unity-webgl.directive';
+import { NgUnityWebglFocusElementDirective } from './directives/ng-unity-webgl-focus-element.directive';
 import { GroupByPipe } from './pipes/group-by.pipe';
 
 import { AppComponent } from './components/app.component';
@@ -112,7 +114,8 @@ import { RoleEditorComponent } from './components/controls/role-editor.component
     BootstrapSelectDirective,
     BootstrapDatepickerDirective,
     GroupByPipe,
-    NgUnityWebglDirective
+    NgUnityWebglDirective,
+    NgUnityWebglFocusElementDirective
   ],
   providers: [
     { provide: ErrorHandler, useClass: AppErrorHandler },

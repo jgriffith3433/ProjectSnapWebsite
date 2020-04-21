@@ -1,6 +1,8 @@
 import { Directive, ElementRef, Input } from '@angular/core';
 import { Renderer2, Inject } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
+import { NgUnityWebglManagerService } from '../services/ng-unity-webgl-manager.service';
+
 const EngineTrigger: any = require('../assets/scripts/EngineTrigger.js');
 const unityLoader: any = require('../assets/scripts/unityLoader.js');
 
@@ -14,41 +16,24 @@ export class NgUnityWebglDirective {
 
   instance: any;
 
-  constructor(private el: ElementRef, private renderer2: Renderer2, @Inject(DOCUMENT) private _document) {
+  constructor(private el: ElementRef, private renderer2: Renderer2, @Inject(DOCUMENT) private _document, private ngUnityWebglManagerService: NgUnityWebglManagerService) {
 
-  }
-
-  onInputFieldFocus() {
-    console.log("input field focus");
-    if (this.instance) {
-      var event = {
-        eventName: "UIInputSwitched",
-        payload: {
-          isUnity: false
-        }
-      };
-
-      var message = JSON.stringify(event);
-      this.instance.SendMessage('UIEventDispatcher', 'ProcessEvent', message);
-    }
-  }
-
-  onInputFieldUnfocus() {
-    console.log("input field unfocus");
-    if (this.instance) {
-      var event = {
-        eventName: "UIInputSwitched",
-        payload: {
-          isUnity: true
-        }
-      };
-
-      var message = JSON.stringify(event);
-      this.instance.SendMessage('UIEventDispatcher', 'ProcessEvent', message);
-    }
   }
 
   ngOnInit() {
+    unityLoader.createUnityInstance(this.el.nativeElement, {
+      dataUrl: `/assets/games/${this.gameName}/0.1.data`,
+      frameworkUrl: `/assets/games/${this.gameName}/0.1.framework.js`,
+      codeUrl: `/assets/games/${this.gameName}/0.1.wasm`,
+      streamingAssetsUrl: "StreamingAssets",
+      companyName: "DefaultCompany",
+      productName: "ProjectSnapWebgame",
+      productVersion: "0.1",
+    }).then((instance) => {
+      this.instance = instance;
+      this.ngUnityWebglManagerService.setInstance(this.gameName, this.instance);
+    });
+
     //function ToggleFullScreen() {
     //  var isInFullScreen = (document.fullscreenElement && document.fullscreenElement !== null) ||
     //    (document.webkitFullscreenElement && document.webkitFullscreenElement !== null) ||
@@ -115,16 +100,5 @@ export class NgUnityWebglDirective {
     //    onRuntimeInitialized: RuntimeInitialized,
     //  },
     //});
-    unityLoader.createUnityInstance(this.el.nativeElement, {
-      dataUrl: `/assets/games/${this.gameName}/0.1.data`,
-      frameworkUrl: `/assets/games/${this.gameName}/0.1.framework.js`,
-      codeUrl: `/assets/games/${this.gameName}/0.1.wasm`,
-      streamingAssetsUrl: "StreamingAssets",
-      companyName: "DefaultCompany",
-      productName: "ProjectSnapWebgame",
-      productVersion: "0.1",
-    }).then((instance) => {
-      this.instance = instance;
-    });
   }
 }

@@ -16,7 +16,7 @@
             <div class="form-group row has-feedback-icon">
               <label class="col-form-label col-md-3" for="login-username">Username:</label>
               <div class="col-md-9">
-                <input type="text" id="login-username" name="username" placeholder="Enter username" autocomplete="username" class="form-control" [ngClass]="{'is-valid': f.submitted && username.valid, 'is-invalid' : f.submitted && !username.valid}"
+                <input type="text" id="login-username" appNgUnityWebglFocusElement gameName="0.1" name="username" placeholder="Enter username" autocomplete="username" class="form-control" [ngClass]="{'is-valid': f.submitted && username.valid, 'is-invalid' : f.submitted && !username.valid}"
                        [(ngModel)]="userLogin.userName" #username="ngModel" required />
                 <i *ngIf="f.submitted" class="fa form-control-feedback" [ngClass]="{'fa-check': username.valid, 'fa-times' : !username.valid}" aria-hidden="true"></i>
                 <span class="invalid-feedback" *ngIf="f.submitted && !username.valid">
@@ -27,7 +27,7 @@
             <div class="form-group row has-feedback-icon">
               <label class="col-form-label col-md-3" for="login-password">Password:</label>
               <div class="col-md-9">
-                <input type="password" id="login-password" name="password" placeholder="Enter password" autocomplete="current-password" class="form-control" [ngClass]="{'is-valid': f.submitted && password.valid, 'is-invalid' : f.submitted && !password.valid}"
+                <input type="password" id="login-password" appNgUnityWebglFocusElement gameName="0.1" name="password" placeholder="Enter password" autocomplete="current-password" class="form-control" [ngClass]="{'is-valid': f.submitted && password.valid, 'is-invalid' : f.submitted && !password.valid}"
                        [(ngModel)]="userLogin.password" #password="ngModel" required />
                 <i *ngIf="f.submitted" class="fa form-control-feedback" [ngClass]="{'fa-check': password.valid, 'fa-times' : !password.valid}" aria-hidden="true"></i>
                 <span class="invalid-feedback" *ngIf="f.submitted && !password.valid">
@@ -38,7 +38,7 @@
             <div class="form-group row">
               <div class="offset-md-3 col-md-9">
                 <div class="form-check">
-                  <input type="checkbox" class="form-check-input" id="login-rememberme" name="rememberMe" [(ngModel)]="userLogin.rememberMe">
+                  <input type="checkbox" class="form-check-input" appNgUnityWebglFocusElement gameName="0.1" id="login-rememberme" name="rememberMe" [(ngModel)]="userLogin.rememberMe">
                   <label class="form-check-label" for="login-rememberme">Remember me</label>
                 </div>
               </div>
