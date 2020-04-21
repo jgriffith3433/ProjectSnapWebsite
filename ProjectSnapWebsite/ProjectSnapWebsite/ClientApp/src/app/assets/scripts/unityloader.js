@@ -489,7 +489,7 @@
     };
 
     return {
-      createUnityInstance: function (e, t, n) { _unityLoader.createUnityInstance(e, t, n); return this; },
+      createUnityInstance: function (e, t, n) { return _unityLoader.createUnityInstance(e, t, n); },
       init: _unityLoader.init,
     };
   };

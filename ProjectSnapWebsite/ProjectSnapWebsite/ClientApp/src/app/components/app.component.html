@@ -78,10 +78,21 @@
     </div>
   </div>
 
-  <main class="app-component container">
-    <router-outlet></router-outlet>
+  <main class="app-component">
+    <div id="game_container">
+      <div class="webgl-content">
+        <canvas id="game" style="width: 100%; height: 100%; background: #231F20" appNgUnityWebgl gameName="0.1"></canvas>
+      </div>
+      <div id="ui_root">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
     <div class="app-component footer-height"></div>
   </main>
+  <!--<main class="app-component container">
+    <router-outlet></router-outlet>
+    <div class="app-component footer-height"></div>
+  </main>-->
 
   <footer class="app-component footer fixed-bottom">
     <div class="container">

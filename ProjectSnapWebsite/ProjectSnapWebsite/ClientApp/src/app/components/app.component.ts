@@ -20,6 +20,7 @@ import { Permission } from '../models/permission.model';
 import { LoginComponent } from '../components/login/login.component';
 
 const alertify: any = require('../assets/scripts/alertify.js');
+const EngineTrigger: any = require('../assets/scripts/EngineTrigger.js');
 
 
 @Component({
@@ -36,6 +37,10 @@ export class AppComponent implements OnInit, AfterViewInit {
   newNotificationCount = 0;
   appTitle = 'ProjectSnapWebsite';
   appLogo = require('../assets/images/logo-white.png');
+  browserfirefox = require('../assets/images/browser-firefox.png');
+  browserchrome = require('../assets/images/browser-chrome.png');
+  browsersafari = require('../assets/images/browser-safari.png');
+  Logo = require('../assets/images/Logo.png');
 
   stickyToasties: number[] = [];
 
@@ -85,7 +90,6 @@ export class AppComponent implements OnInit, AfterViewInit {
 
 
   ngAfterViewInit() {
-
     this.modalLoginControls.changes.subscribe((controls: QueryList<any>) => {
       controls.forEach(control => {
         if (control) {
